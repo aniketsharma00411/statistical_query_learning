@@ -1,0 +1,52 @@
+\section{Comparison between SQ Model and PAC Model}
+\label{sec:comparison}
+
+\begin{theorem}[\cite{kearns_efficient_1998}]
+If a class of functions is efficiently SQ learnable, then it is efficiently learnable in the PAC model with random classification noise of rate $0 \leq \eta < \frac{1}{2}$.
+\end{theorem}
+
+\textit{Proof:} $S = \{\chi: \cX \times \{-1, 1\} \xrightarrow{} \{-1, 1\}\}; |S| = k$
+
+Let $P = \EE{\chi(x, c(x))}$ and $\hat{P}$ is the empirical mean,
+
+Drawing sample data $X$, such that $|X| = poly\left(\frac{1}{\tau}, \frac{1}{1-2\eta}, log(\frac{1}{\delta}), log(k)\right)$. For all $\chi \in S$,
+
+\begin{align*}
+    X_{clean} &= \{x \in X: \chi(x, 0) = \chi(x, 1)\} \\
+    X_{noise} &= \{x \in X: \chi(x, 0) \neq \chi(x, 1)\}
+\end{align*}
+
+Then,
+\begin{align*}
+    \hat{P}_{clean} &= \frac{\Sigma_{x in X_{clean} \chi(x, f(x))}}{|X_{clean}|} \\
+    \hat{P}_{noise} &= \frac{\Sigma_{x in X_{noise} \chi(x, f(x))}}{|X_{noise}|}
+\end{align*}
+
+Then, we can get (also refer \ref{correction_factor})
+\begin{align*}
+    \hat{P} &= \frac{\hat{P}_{noise} - \eta}{1 - 2\eta}.\left(\frac{|X_{noise}|}{|X|}\right) + \hat{P}_{clean}.\left(\frac{|X_{clean}|}{|X|}\right)
+\end{align*}
+
+Using Additive Chernoff Bounds and union bounds, for all statistical queries $S$,
+\begin{align*}
+    \Prob{\hat{P} - P \geq \tau} \leq k.e^{-2|X|\tau^2}
+\end{align*}
+
+Let,
+\begin{align*}
+    k.e^{-2|X|\tau^2} = \delta
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \Prob{\hat{P} - P \geq \tau} \leq \delta \\
+    \Prob{\hat{P} - P \leq \tau} \geq 1-\delta
+\end{align*}
+
+% Since err_D(h) \leq \epsilon for SQ learning, if \hat{P} - P \leq \tau it means it is SQ learnable and therefore \Prob{err_D(h)} \geq 1-\delta
+
+If we take $\eta = 0$, we get the following corollary.
+
+\begin{corollary}
+If a class of functions is efficiently SQ learnable, then it is efficiently PAC learnable.
+\end{corollary}

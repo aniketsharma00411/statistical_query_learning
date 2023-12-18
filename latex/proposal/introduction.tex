@@ -1,0 +1,21 @@
+\section{Introduction}
+Statistical Query (SQ) learning is a learning framework introduced by \cite{kearns_efficient_1998} for designing machine learning algorithms tolerant to white label noise (\cite{angluin_learning_1988}). It is originated from and is a restriction of the Probably Approximately Correct (PAC) learning model (\cite{valiant_theory_1984}) as it restricts the learning algorithm to use statistical properties of the data instead of a set of data samples.
+
+The importance of SQ learning framework lies in its usefulness in defining robust and noise-tolerant learning algorithms. Virtually all noise-tolerant learning algorithms based on PAC model were either obtained from a SQ algorithm or any be captured by the SQ model with the noise rate approaching the information-theoretic barrier of 1/2 (\cite{kearns_efficient_1998}, \cite{feldman_statistical_2008}). SQ learning is also useful in a variety of modern applications like optimization (\cite{feldman_statistical_2017}), evolvability (\cite{feldman_evolvability_2008}), differential privacy (\cite{dwork_calibrating_2006}) and adaptive data analysis (\cite{dwork_reusable_2015}).
+
+% Statistical queries introduction
+% Points for introduction are as below:
+% \begin{itemize}
+%     \item Write how SQ Learning came from PAC model (page 2 starting)
+%     \item How SQ framework is a restriction of PAC (how?) (page 2 after def 1)
+% \end{itemize}
+
+% This is important because SQ model is making noise-tolerant and a lot of algorithms commonly used today can be defined as SQ algorithms. \textbf{(Write it properly)}
+
+The main goal of this project is to summarize the Statistical Query Learning framework. Section \ref{sec:definitions} provides formal definition the SQ Learning framework and its variants. In the final report, the corresponding section will give a comparison between SQ model and the popular Probably Approximately Correct (PAC) learning model. The next section will define and prove the bounds for SQ algorithms, give a relationship between SQ dimension and Vapnik-Chervonenkis (VC) dimension. The next section will give the limitations of the SQ framework. If time permits I will also describe with an example how the algorithms listed above can be implemented with SQ Learning. This project closely follows the works of \citet{reyzin_statistical_2020} and \citet{feldman_statistical_2008}.
+
+% \begin{itemize}
+%     \item Explain SQ Learning
+%     \item Mention that it is a natural restriction of PAC learning and explain what does it mean annd what does it imply
+%     \item Equivalence between SQ Learning and PAC Learning  
+% \end{itemize}

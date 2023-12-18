@@ -1,0 +1,57 @@
+\section{Definitions}
+\label{sec:definitions}
+In this section, I will define the SQ learning model and the related terms. I will begin by defining PAC learning since as mentioned previously SQ learning originates from it.
+
+\begin{definition}[efficient PAC learning]
+Let $C$ be a class of boolean functions $c: X \xrightarrow{} \{-1, 1\}$. Then $C$ is efficient PAC learnable if there exists an algorithm $\cA$ such that for every $c \in C$, any probability distribution $D$ over $X$, any $\epsilon > 0$, and any $\delta < 1$, $\cA$ takes a labeled sample $S$ of size $m = poly\left(\frac{1}{\epsilon}, \frac{1}{\delta}, |x|, |c|\right)$ from $D$ and in polynomial time $m$, outputs a hypothesis $h$ for which
+    \begin{equation*}
+        \Prob{err_D(h) \leq \epsilon} \geq 1 - \delta
+    \end{equation*}
+\end{definition}
+
+Now, I will give the definition of statistical query and the statistical query oracle.
+
+\begin{definition}[statistical query]
+A statistical query is a pair $(\chi, \tau)$ where $\chi: X \times \{-1, 1\} \xrightarrow{} \{-1, 1\}$ and $\tau \geq 0$ is the tolerance parameter.
+\end{definition}
+
+\begin{definition}[statistical query oracle]
+The statistical query oracle is a function $SQ(\chi, \tau)$ which when given a statistical query as input returns any value in the range
+\begin{equation*}
+    [\EE{\chi(x, c(x))} - \tau, \EE{\chi(x, c(x))} + \tau]
+\end{equation*}
+\end{definition}
+
+Finally, I will define efficient statistical query learning.
+
+\begin{definition}[efficient SQ learning]]
+Let $C$ be a class of boolean functions $c: X \xrightarrow{} \{-1, 1\}$. Then $C$ is efficient SQ learnable if there exists an algorithm $\cA$ such that for every $c \in C$, any probability distribution $D$ over $X$, and any $\epsilon > 0$, there is a polynomial $p(\cdot, \cdot, \cdot)$ such that
+\begin{enumerate}
+    \item $\cA$ makes at most $p(\frac{1}{\epsilon}, |x|, |c|)$ calls to the SQ oracle
+    \item the smallest $\tau$ that $\cA$ uses satisfies $\frac{1}{\tau} \leq p(\frac{1}{\epsilon}, |x|, |c|)$
+    \item the statistical queries $\chi$ are evaluable in time $p(\frac{1}{\epsilon}, |x|, |c|)$
+    \item $\cA$ outputs a hypothesis $h$ satisfying $err_D(h) \leq \epsilon$
+\end{enumerate}
+% $\cA$ takes a labeled sample $S$ of size $m = poly\left(\frac{1}{\epsilon}, \frac{1}{\delta}, |x|, |c|\right)$ from $D$ and in polynomial time $m$, outputs a hypothesis $h$ for which
+    
+\end{definition}
+
+\subsection{Variants of SQ models}
+We can define the statistical query oracle differently to get extensions of the statistical query model. \citet{bshouty_using_2001} modified the oracle in order to take the pair of hypothesis function $h$ and tolerance parameter $\tau$ as input and output the estimate of correlation between the hypothesis and the target function. This correlational statistical query (CSQ) oracle is defined as
+
+\begin{definition}[correlational statistical query oracle]
+The correlational statistical query oracle is a function $CSQ(h, \tau)$ which when given a hypothesis function $h: X \xrightarrow{} \{-1, 1\}$ and a tolerance parameter $\tau$ as inputs returns any value in the range
+\begin{equation*}
+    [\EE{h(x)c(x)} - \tau, \EE{h(x)c(x)} + \tau]
+\end{equation*}
+\end{definition}
+
+\cite{yang_learning_2001} present an "honest" SQ (HSQ) oracle which takes two inputs a statistical query $\chi$ and the sample count $n$ and outputs the empirical average of the query by sampling the distribution $D$. The HSQ oracle is defined as
+
+\begin{definition}[honest statistical query oracle]
+The honest statistical query oracle is a function $HSQ(\chi, n)$ which when given a statistical query and the sample size $n$ as inputs returns the empiricial average
+\begin{equation*}
+    % [\EE{\chi(x, c(x))} - \tau, \EE{\chi(x, c(x))} + \tau]
+    \frac{1}{n} \sum_{i=1}^n \chi(x_i, c(x_i))
+\end{equation*}
+\end{definition}

@@ -1,0 +1,130 @@
+\section{Bounds for SQ Algorithms}
+\label{sec:bounds}
+
+\subsection{SQ Dimension and VC Dimension}
+The complexity of statistical query learning is controlled using a quantity called statistical query dimension (\cite{blum_weakly_1994}).
+
+\begin{definition}[statistical query dimension]
+Let $C$ be a class of boolean function $c: X \xrightarrow{} \{-1, 1\}$ called the concept class and $\cD$ be a probability distribution, then the statistical query dimension, SQ-DIM$_\cD$($C$) is defined as the largest number $d$ such that,
+    \begin{enumerate}
+        \item $\exists S \subseteq C$ such that $|S| = d$ which realizes the SQ bound
+        \item $\forall i \neq j, |\langle f_i, f_j \rangle_\cD| \leq \frac{1}{d}, \text{where} f_i, f_j \in S$
+    \end{enumerate}
+\end{definition}
+
+Here, the $\langle f_i, f_j \rangle_\cD$ is the correlation between two function $f_i, f_j$ and is defined as $\langle f_i, f_j \rangle_\cD = \EE{f_i.f_j}$.
+
+The statistical query dimension with respect to the worst case distribution is defined as SQ-DIM($C$)$ = max($SQ-DIM$_\cD$($C$)).
+
+\begin{proposition}
+    For a concept class $C$, if VC-DIM($C$)$ = d$, then SQ-DIM($C$)$ = \Omega(d)$.
+\end{proposition}
+
+\textit{Proof:} Let there exists a set $P$ of $d$ points that can be shattered by the concept class $C$. Also, assume without loss of generality that the domain of $P$ is $\{-1, 1\}^{log(d)}$. As $C$ shatters $P$, it contains all $d$ parity functions $f: \{-1, 1\}^{log(d)} \xrightarrow{} \{-1, 1\}$. As shown by \cite{odonnell_analysis_2014}, all of these parity functions are pairwise orthogonal, thus, SQ-DIM($C$)$ = d$. More generally, SQ dimensions can be larger which proves the proposition.
+
+\begin{proposition}
+    For a concept class $C$, if VC-DIM($C$)$ = d$, then SQ-DIM($C$)$ \leq 2^d$.
+\end{proposition}
+
+\textit{Proof:} Similar to the previous proof, we could have assumed the domain of $S$ to be $\{-1, 1\}^d$ and following the same logic the SQ-DIM($C$)$ = 2^d$. Also, \cite{braverman_interactive_2012} show that for any function with $d$ bits the complexity is bounded by $2^{O(d)}$.
+
+% \begin{proposition}
+%     For a concept class $C$, if VC-DIM($C$)$ = d$, then SQ-DIM($C$)$ \leq 2^{O(d)}$.
+% \end{proposition}
+
+% \textit{Proof:} Again we will take the same setting, \cite{braverman_interactive_2012} show that for any function with $d$ bits the complexity is bounded by $2^{O(d)}$.
+
+% theorem 22
+% \begin{theorem}[]
+%     For a concept class $C$, if VC-DIM($C$)$ = d$, then SQ-DIM($C$)$ \leq 2^{O(d)}$.
+% \end{theorem}
+
+% \textit{Proof:}
+
+\subsection{Lower Bound}
+% Theorem 12 and maybe corollary 13 and lemma 14
+\begin{lemma}[\cite{bshouty_using_2001}]
+\label{sq_csq_rel}
+Any arbitrary statistical query can be answered by asking two statistical queries that are independent of the target and two correlational statistical queries.
+\end{lemma}
+
+\textit{Proof:} We will decompose the SQ,
+\begin{align*}
+    \EE{chi(x, c(x)} &= \EE{chi(x, -1).\frac{1-c(x)}{2} + chi(x, 1).\frac{1+c(x)}{2}} \\
+    \EE{chi(x, c(x)} &= \frac{1}{2}.\left(\EE{chi(x, 1)c(x)} - \EE{chi(x, -1)c(x)} + \EE{chi(x, 1)} + \EE{chi(x), -1}\right)
+\end{align*}
+
+The first two terms in the above equation are correlational statistical queries and the last two terms are target independent statistical queries.
+
+\begin{theorem}[\cite{blum_weakly_1994}]
+\label{lower_bound_orig}
+For a concept class $C$ with SQ-DIM$_\cD$($C$)$ = d$, any SQ learning algorithm with tolerance parameter lower bounded by $\tau > \frac{1}{d^3}$ must make at least $\frac{d^\frac{1}{3}}{2}$ queries to learn C with accuracy at least $\frac{1}{2} - \frac{1}{d^3}$.
+\end{theorem}
+
+We can reduce the complexity of this proof by proving the lower bound for CSQs given by \textbf{\cite{gavalda_characterizing_2009}} because of Lemma \ref{sq_csq_rel}. The proof for CSQs gives a weaker result than Theorem \ref{lower_bound_orig}.
+
+\begin{theorem}[\cite{gavalda_characterizing_2009}]
+\label{lower_bound_csq}
+For a concept class $C$ with SQ-DIM$_\cD$($C$)$ = d$, any SQ learning algorithm with tolerance parameter lower bounded by $\tau > 0$ must make at least $\frac{d\tau^2-1}{2}$ queries to learn C with accuracy at least $\tau$.
+\end{theorem}
+
+\textit{Proof:} Let $c_1, \cdot, c_d \in C$ such that SQ-DIM$_\cD$($C$)$ = d$. Let $h$ be an arbitrary query function and $A := \{i \in [d]: \langle c_i, h \rangle \geq \tau\}$. Using Cauchy-Schwartz inequality,
+\begin{align*}
+    \langle h, \Sigma_{i \in A} c_i \rangle^2 &\leq \lVert h \rVert^2.\lVert \Sigma_{i \in A} c_i \rVert^2 \\
+    \langle h, \Sigma_{i \in A} c_i \rangle^2 &\leq \lVert \Sigma_{i \in A} c_i \rVert^2 \\
+    \langle h, \Sigma_{i \in A} c_i \rangle^2 &= \Sigma_{i,j \in A} \langle c_i, c_j \rangle \\
+    \langle h, \Sigma_{i \in A} c_i \rangle^2 &\leq \Sigma_{i \in A} \left(1+\frac{|A|-1}{d}\right) \\
+    \langle h, \Sigma_{i \in A} c_i \rangle^2 &\leq |A| + \frac{|A|^2}{d}
+\end{align*}
+
+Here, the norm of $c$ is defined as $\lVert c \rVert_\cD := \sqrt{\langle c, c \rangle_\cD}$. 
+
+By the definition of $A$, it holds that $\langle h, \Sigma_{i \in A} c_i \rangle \geq |A|\tau$. Therefore,
+\begin{align*}
+    |A|^2\tau^2 &\leq |A| + \frac{|A|^2}{d} \\
+    |A| &\leq \frac{d}{d\tau^2 - 1}
+\end{align*}
+
+The same bound holds for $A' := \{i \in [d]: \langle c_i, h \rangle \leq -\tau\}$. Therefore, for a query h, at most $|A| + |A'| \leq \frac{2d}{d\tau^2-1}$ of the functions are inconsistent with the CSQ oracle. Since SQ-DIM($C$)$ = d$, therefore we need at least $\frac{d\tau^2-1}{2}$ queries to learn C. This gives the desired lower bound.
+
+\textit{Note: }When $\tau=\frac{1}{d^{\frac{1}{3}}}$, then $\frac{d^{\frac{1}{3}}-1}{2}$ queries are needed, this result though weaker is comparable with Theorem \ref{lower_bound_orig}.
+
+Based on this theorem, we get the following corollary.
+
+\begin{corollary}
+\label{not_learnable}
+Let $C$ be a concept class with SQ-DIM$_\cD$($C$)$ = \omega(n^k)$ (i.e. superpolynomial statistical query dimension), for $n=|x|$ and all $k$, then $C$ is not efficiently SQ learnable under $\cD$.
+\end{corollary}
+
+\cite{yang_new_2005} give a lower bound for HSQs and show that any HSQ algorithm must use a total sample complexity of at least $\Omega(d)$ to learn a concept class with SQ-DIM($C$)$ = d$ with a constant accuracy and probability of success.
+
+\subsection{Upper Bound}
+\begin{proposition}
+Let $C$ be a concept class with SQ-DIM$_\cD$($C$)$ = $poly($n$), then $C$ is weakly learnable under $\cD$.
+\end{proposition}
+
+\textit{Proof:} Let $S \subseteq C$ which realizes the SQ bound. Calculate $|\langle f_i, c^* \rangle|$ for the target function $c^*$  and each $f_i \in S$. At least one of these correlations must be greater than $\frac{1}{d}$, otherwise, we could add $c^*$ to $S$ which contradicts the maximality of $S$. Thus, we can conclude that $C$ is weakly learnable.
+
+\begin{theorem}[\cite{aslam_general_1998}]
+For a concept class $C$ with SQ-DIM($C$)$ = d$, then $C$ is SQ learnable with error $\epsilon > 0$ using $O\left(d^5log^2\left(\frac{1}{\epsilon}\right)\right)$ statistical queries with tolerances bounded by $\tau = \Omega\left(\frac{\epsilon}{3d}\right)$.
+\end{theorem}
+
+\textit{Proof:} We can use the boosting technique introduced by \cite{freund_improved_1992} and applied to statistical query learning by \cite{aslam_general_1998} to boost weak SQ learning algorithms. First, we write $\mathbb{E}_{\cD_{i+1}}[\chi(x, c(x))]$ with respect to $\mathbb{E}_{\cD}[\chi(x, c(x))]$. Here, $\cD_{i+1}$ is the distribution corresponding to the weak hypotheses when $i$ hypotheses are generated.
+
+Let $i$ be the number of hypotheses generated, $w$ be the number of weak hypotheses and $i-w$ be the number of fair coin hypotheses, i.e. we use a fair coin as the hypotheses. Also, let $\cX_r^w \subseteq \cX$ be the set of instances that are correctly classified by exactly $r$ of the $w$ weak hypotheses. $\lambda_r^{i, w}$ is the probability that an instance $x \in \cX_r^w$ is accepted using a probabilistic filter defined using the fair coin hypotheses.
+\begin{align*}
+\mathbb{E}_{\cD+1}[\chi(x, c(x))] &= \mathbb{P}_{\cD+1}(\chi(x, c(x)) = 1) \\
+&= \Sigma_{r=0}^{w} \mathbb{P}_{\cD+1}(\chi(x, c(x)) = 1 | (x \in \cX_r^w)).\mathbb{P}_{\cD+1}(x \in \cX_r^w) \\
+&= \Sigma_{r=0}^{w} \mathbb{P}_{\cD}(\chi(x, c(x)) = 1 | (x \in \cX_r^w)).\mathbb{P}_{\cD+1}(x \in \cX_r^w) \\
+&= \Sigma_{r=0}^{w} \frac{\mathbb{P}_{\cD}(\chi(x, c(x)) = 1 \wedge (x \in \cX_r^w))}{\mathbb{P}_{\cD}(x \in \cX_r^w)}.\frac{\lambda_r^{i, w} \mathbb{P}_{\cD}(x \in \cX_r^w)}{\Sigma_{j=0}^{w} \lambda_j^{i, w} \mathbb{P}_{\cD}(x \in \cX_r^w)} \\
+&= \frac{\Sigma_{r=0}^{w} \lambda_r^{i, w} \mathbb{P}_{\cD}(\chi(x, c(x)) = 1 \wedge (x \in \cX_r^w))}{\Sigma_{r=0}^{w} \lambda_r^{i, w} \mathbb{P}_{\cD}(x \in \cX_r^w)}
+\end{align*}
+
+This above result can be stated in terms of statistical query oracle $SQ(c, \cD)$ as
+\begin{align*}
+SQ(c, \cD_{i+1})[\chi] = \frac{\Sigma_{r=0}^{w} \lambda_r^{i, w} SQ(c, \cD)[\chi \wedge \chi_r^w]}{\Sigma_{r=0}^{w} \lambda_r^{i, w} SQ(c, \cD)[\chi_r^w]}
+\end{align*}
+
+By setting the bound on the denominator term of the above equation we get the lower bound on tolerance of $\Omega\left(\frac{\epsilon}{3d}\right)$ and the upper bound on the number of queries of $O\left(d^5log^2\left(\frac{1}{\epsilon}\right)\right)$ which is the desired result.
+
+% \textbf{If pages are left then mention strong statistical query dimension}

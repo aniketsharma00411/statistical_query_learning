@@ -1,0 +1,415 @@
+@article{kearns_efficient_1998,
+	title = {Efficient noise-tolerant learning from statistical queries},
+	volume = {45},
+	issn = {0004-5411},
+	url = {https://dl.acm.org/doi/10.1145/293347.293351},
+	doi = {10.1145/293347.293351},
+	abstract = {In this paper, we study the problem of learning in the presence of classification noise in the probabilistic learning model of Valiant and its variants. In order to identify the class of “robust” learning algorithms in the most general way, we formalize a new but related model of learning from statistical queries. Intuitively, in this model a learning algorithm is forbidden to examine individual examples of the unknown target function, but is given acess to an oracle providing estimates of probabilities over the sample space of random examples. One of our main results shows that any class of functions learnable from statistical queries is in fact learnable with classification noise in Valiant's model, with a noise rate approaching the information-theoretic barrier of 1/2. We then demonstrate the generality of the statistical query model, showing that practically every class learnable in Valiant's model and its variants can also be learned in the new model (and thus can be learned in the presence of noise). A notable exception to this statement is the class of parity functions, which we prove is not learnable from statistical queries, and for which no noise-tolerant algorithm is known.},
+	number = {6},
+	urldate = {2023-10-30},
+	journal = {Journal of the ACM},
+	author = {Kearns, Michael},
+	month = nov,
+	year = {1998},
+	keywords = {computational learning theory, machine learning},
+	pages = {983--1006},
+}
+
+@article{angluin_learning_1988,
+	title = {Learning from noisy examples},
+	volume = {2},
+	issn = {1573-0565},
+	url = {https://doi.org/10.1007/BF00116829},
+	doi = {10.1007/BF00116829},
+	abstract = {The basic question addressed in this paper is: how can a learning algorithm cope with incorrect training examples? Specifically, how can algorithms that produce an “approximately correct” identification with “high probability” for reliable data be adapted to handle noisy data? We show that when the teacher may make independent random errors in classifying the example data, the strategy of selecting the most consistent rule for the sample is sufficient, and usually requires a feasibly small number of examples, provided noise affects less than half the examples on average. In this setting we are able to estimate the rate of noise using only the knowledge that the rate is less than one half. The basic ideas extend to other types of random noise as well. We also show that the search problem associated with this strategy is intractable in general. However, for particular classes of rules the target rule may be efficiently identified if we use techniques specific to that class. For an important class of formulas—the k-CNF formulas studied by Valiant—we present a polynomial-time algorithm that identifies concepts in this form when the rate of classification errors is less than one half.},
+	language = {en},
+	number = {4},
+	urldate = {2023-10-30},
+	journal = {Machine Learning},
+	author = {Angluin, Dana and Laird, Philip},
+	month = apr,
+	year = {1988},
+	keywords = {Concept learning, learning from examples, noisy data, probably approximately correct learning, theoretical limitations},
+	pages = {343--370},
+}
+
+@inproceedings{valiant_theory_1984,
+	address = {Not Known},
+	title = {A theory of the learnable},
+	isbn = {9780897911337},
+	url = {http://portal.acm.org/citation.cfm?doid=800057.808710},
+	doi = {10.1145/800057.808710},
+	language = {en},
+	urldate = {2023-10-30},
+	booktitle = {Proceedings of the sixteenth annual {ACM} symposium on {Theory} of computing  - {STOC} '84},
+	publisher = {ACM Press},
+	author = {Valiant, L. G.},
+	year = {1984},
+	pages = {436--445},
+}
+
+@incollection{feldman_statistical_2008,
+	address = {Boston, MA},
+	title = {Statistical {Query} {Learning}},
+	isbn = {9780387301624},
+	url = {https://doi.org/10.1007/978-0-387-30162-4_401},
+	language = {en},
+	urldate = {2023-10-23},
+	booktitle = {Encyclopedia of {Algorithms}},
+	publisher = {Springer US},
+	author = {Feldman, Vitaly},
+	editor = {Kao, Ming-Yang},
+	year = {2008},
+	doi = {10.1007/978-0-387-30162-4_401},
+	pages = {894--897},
+}
+
+@article{dwork_reusable_2015,
+	title = {The reusable holdout: {Preserving} validity in adaptive data analysis},
+	volume = {349},
+	issn = {0036-8075, 1095-9203},
+	shorttitle = {The reusable holdout},
+	url = {https://www.science.org/doi/10.1126/science.aaa9375},
+	doi = {10.1126/science.aaa9375},
+	abstract = {Testing hypotheses privately 
+             
+              Large data sets offer a vast scope for testing already-formulated ideas and exploring new ones. Unfortunately, researchers who attempt to do both on the same data set run the risk of making false discoveries, even when testing and exploration are carried out on distinct subsets of data. Based on ideas drawn from differential privacy, Dwork 
+              et al. 
+              now provide a theoretical solution. Ideas are tested against aggregate information, whereas individual data set components remain confidential. Preserving that privacy also preserves statistical inference validity. 
+             
+             
+              Science 
+              , this issue p. 
+              636 
+             
+          ,  
+            A statistical approach allows large data sets to be reanalyzed to test new hypotheses. 
+          ,  
+            Misapplication of statistical data analysis is a common cause of spurious discoveries in scientific research. Existing approaches to ensuring the validity of inferences drawn from data assume a fixed procedure to be performed, selected before the data are examined. In common practice, however, data analysis is an intrinsically adaptive process, with new analyses generated on the basis of data exploration, as well as the results of previous analyses on the same data. We demonstrate a new approach for addressing the challenges of adaptivity based on insights from privacy-preserving data analysis. As an application, we show how to safely reuse a holdout data set many times to validate the results of adaptively chosen analyses.},
+	language = {en},
+	number = {6248},
+	urldate = {2023-10-30},
+	journal = {Science},
+	author = {Dwork, Cynthia and Feldman, Vitaly and Hardt, Moritz and Pitassi, Toniann and Reingold, Omer and Roth, Aaron},
+	month = aug,
+	year = {2015},
+	pages = {636--638},
+}
+
+@inproceedings{dwork_calibrating_2006,
+	address = {Berlin, Heidelberg},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {Calibrating {Noise} to {Sensitivity} in {Private} {Data} {Analysis}},
+	isbn = {9783540327325},
+	doi = {10.1007/11681878_14},
+	abstract = {We continue a line of research initiated in [10,11]on privacy-preserving statistical databases. Consider a trusted server that holds a database of sensitive information. Given a query function f mapping databases to reals, the so-called true answer is the result of applying f to the database. To protect privacy, the true answer is perturbed by the addition of random noise generated according to a carefully chosen distribution, and this response, the true answer plus noise, is returned to the user.},
+	language = {en},
+	booktitle = {Theory of {Cryptography}},
+	publisher = {Springer},
+	author = {Dwork, Cynthia and McSherry, Frank and Nissim, Kobbi and Smith, Adam},
+	editor = {Halevi, Shai and Rabin, Tal},
+	year = {2006},
+	keywords = {Laplace Distribution, Privacy Breach, Query Function, Semantic Security, True Answer},
+	pages = {265--284},
+}
+
+@inproceedings{feldman_evolvability_2008,
+	address = {New York, NY, USA},
+	series = {{STOC} '08},
+	title = {Evolvability from learning algorithms},
+	isbn = {9781605580470},
+	url = {https://doi.org/10.1145/1374376.1374465},
+	doi = {10.1145/1374376.1374465},
+	abstract = {Valiant has recently introduced a framework for analyzing the capabilities and the limitations of the evolutionary process of random change guided by selection. In his framework the process of acquiring a complex functionality is viewed as a substantially restricted form of PAC learning of an unknown function from a certain set of functions. Valiant showed that classes of functions evolvable in his model are also learnable in the statistical query (SQ) model of Kearns and asked whether the converse is true. We show that evolvability is equivalent to learnability by a restricted form of statistical queries. Based on this equivalence we prove that for any fixed distribution D over the instance space, every class of functions learnable by SQs over D is evolvable over D. Previously, only the evolvability of monotone conjunctions of Boolean variables over the uniform distribution was known. On the other hand, we prove that the answer to Valiant's question is negative when distribution-independent evolvability is considered. To demonstrate this, we develop a technique for proving lower bounds on evolvability and use it to show that decision lists and linear threshold functions are not evolvable in a distribution-independent way. This is in contrast to distribution-independent learnability of decision lists and linear threshold functions in the statistical query model.},
+	urldate = {2023-10-29},
+	booktitle = {Proceedings of the fortieth annual {ACM} symposium on {Theory} of computing},
+	publisher = {Association for Computing Machinery},
+	author = {Feldman, Vitaly},
+	month = may,
+	year = {2008},
+	keywords = {evolvability, pac learning, statistical query},
+	pages = {619--628},
+}
+
+@article{feldman_statistical_2017,
+	title = {Statistical {Algorithms} and a {Lower} {Bound} for {Detecting} {Planted} {Cliques}},
+	volume = {64},
+	issn = {0004-5411},
+	url = {https://dl.acm.org/doi/10.1145/3046674},
+	doi = {10.1145/3046674},
+	abstract = {We introduce a framework for proving lower bounds on computational problems over distributions against algorithms that can be implemented using access to a statistical query oracle. For such algorithms, access to the input distribution is limited to obtaining an estimate of the expectation of any given function on a sample drawn randomly from the input distribution rather than directly accessing samples. Most natural algorithms of interest in theory and in practice, for example, moments-based methods, local search, standard iterative methods for convex optimization, MCMC, and simulated annealing, can be implemented in this framework. Our framework is based on, and generalizes, the statistical query model in learning theory [Kearns 1998]. Our main application is a nearly optimal lower bound on the complexity of any statistical query algorithm for detecting planted bipartite clique distributions (or planted dense subgraph distributions) when the planted clique has size O(n1/2 − δ) for any constant δ {\textgreater} 0. The assumed hardness of variants of these problems has been used to prove hardness of several other problems and as a guarantee for security in cryptographic applications. Our lower bounds provide concrete evidence of hardness, thus supporting these assumptions.},
+	number = {2},
+	urldate = {2023-10-30},
+	journal = {Journal of the ACM},
+	author = {Feldman, Vitaly and Grigorescu, Elena and Reyzin, Lev and Vempala, Santosh S. and Xiao, Ying},
+	month = apr,
+	year = {2017},
+	keywords = {Learning theory, lower bounds, planted clique, statistical algorithms, statistical dimension},
+	pages = {8:1--8:37},
+}
+
+@misc{reyzin_statistical_2020,
+	title = {Statistical {Queries} and {Statistical} {Algorithms}: {Foundations} and {Applications}},
+	shorttitle = {Statistical {Queries} and {Statistical} {Algorithms}},
+	url = {https://arxiv.org/abs/2004.00557v2},
+	abstract = {We give a survey of the foundations of statistical queries and their many applications to other areas. We introduce the model, give the main definitions, and we explore the fundamental theory statistical queries and how how it connects to various notions of learnability. We also give a detailed summary of some of the applications of statistical queries to other areas, including to optimization, to evolvability, and to differential privacy.},
+	language = {en},
+	urldate = {2023-10-23},
+	journal = {arXiv.org},
+	author = {Reyzin, Lev},
+	month = apr,
+	year = {2020},
+}
+
+@inproceedings{bshouty_using_2001,
+	address = {Berlin, Heidelberg},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {On {Using} {Extended} {Statistical} {Queries} to {Avoid} {Membership} {Queries}},
+	isbn = {9783540445814},
+	doi = {10.1007/3-540-44581-1_35},
+	abstract = {The Kushilevitz-Mansour (KM)algorithm is an algorithm that finds all the “heavy” Fourier coefficients of a boolean function. It is the main tool for learning decision trees and DNF expressions in the PAC model with respect to the uniform distribution. The algorithm requires an access to the membership query (MQ)oracle.},
+	language = {en},
+	booktitle = {Computational {Learning} {Theory}},
+	publisher = {Springer},
+	author = {Bshouty, Nader H. and Feldman, Vitaly},
+	editor = {Helmbold, David and Williamson, Bob},
+	year = {2001},
+	pages = {529--545},
+}
+
+@inproceedings{yang_learning_2001,
+	address = {Berlin, Heidelberg},
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {On {Learning} {Correlated} {Boolean} {Functions} {Using} {Statistical} {Queries} ({Extended} {Abstract})},
+	isbn = {9783540455837},
+	doi = {10.1007/3-540-45583-3_7},
+	abstract = {In this paper, we study the problem of using statistical query (SQ) to learn a class of highly correlated boolean functions, namely, a class of functions where any pair agree on significantly more than 1/2 fraction of the inputs. We give an almost-tight bound on how well one can approximate all the functions without making any query, and then we show that beyond this bound, the number of statistical queries the algorithm has to make increases with the “extra” advantage the algorithm gains in learning the functions. Here the advantage is defined to be the probability the algorithm agrees with the target function minus the probability the algorithm doesn’t agree. An interesting consequence of our results is that the class of booleanized linear functions over a finite field (f(a(x) = 1 iff ø(a.x) = 1, where ø is an arbitrary boolean function that maps any elements in GFp to ±1) is not efficiently learnable. This result is useful since the hardness of learning booleanized linear functions over a finite field is related to the security of certain cryptosystems ([B01]). In particular, we prove that the class of linear threshold functions over a finite field (f(a,b(x) = 1 iff a. x ≥ b) cannot be learned efficiently using statistical query. This contrasts with Blum et. al.’s result [BFK+96] that linear threshold functions over reals (perceptions) are learnable using the SQ model. Finally, we describe a PAC-learning algorithm that learns a class of linear threshold functions in time that is provably impossible for statistical query algorithms. With properly chosen parameters, this class of linear threshold functions become an example of PAC-learnable, but not SQlearnable functions that are not parity functions.},
+	language = {en},
+	booktitle = {Algorithmic {Learning} {Theory}},
+	publisher = {Springer},
+	author = {Yang, Ke},
+	editor = {Abe, Naoki and Khardon, Roni and Zeugmann, Thomas},
+	year = {2001},
+	keywords = {Boolean Function, Parity Function, Statistical Distance, Statistical Query, Target Function},
+	pages = {59--76},
+}
+
+@inproceedings{blum_weakly_1994,
+	author = {Blum, Avrim and Furst, Merrick and Jackson, Jeffrey and Kearns, Michael and Mansour, Yishay and Rudich, Steven},
+	booktitle = {Proceedings of the twenty-sixth annual {ACM} symposium on Theory of computing - {STOC} '94},
+	date = {1994},
+        year = {1994},
+	doi = {10.1145/195058.195147},
+	eventtitle = {the twenty-sixth annual {ACM} symposium},
+	isbn = {9780897916639},
+	langid = {english},
+	location = {Montreal, Quebec, Canada},
+	pages = {253--262},
+	publisher = {{ACM} Press},
+	title = {Weakly learning {DNF} and characterizing statistical query learning using Fourier analysis},
+	url = {http://portal.acm.org/citation.cfm?doid=195058.195147},
+	urldate = {2023-12-03},
+	bdsk-url-1 = {http://portal.acm.org/citation.cfm?doid=195058.195147},
+	bdsk-url-2 = {https://doi.org/10.1145/195058.195147}}
+
+
+@incollection{gavalda_characterizing_2009,
+	author = {Sz{\"o}r{\'e}nyi, Bal{\'a}zs},
+	booktitle = {Algorithmic Learning Theory},
+	date = {2009},
+        year = {2009},
+	doi = {10.1007/978-3-642-04414-4_18},
+	editor = {Gavald{\`a}, Ricard and Lugosi, G{\'a}bor and Zeugmann, Thomas and Zilles, Sandra},
+	isbn = {9783642044137 9783642044144},
+	langid = {english},
+	location = {Berlin, Heidelberg},
+	pages = {186--200},
+	publisher = {Springer Berlin Heidelberg},
+	shorttitle = {Characterizing Statistical Query Learning},
+	title = {Characterizing Statistical Query Learning: Simplified Notions and Proofs},
+	url = {http://link.springer.com/10.1007/978-3-642-04414-4_18},
+	urldate = {2023-12-04},
+	volume = {5809},
+	bdsk-url-1 = {http://link.springer.com/10.1007/978-3-642-04414-4_18},
+	bdsk-url-2 = {https://doi.org/10.1007/978-3-642-04414-4_18}}
+
+@inproceedings{freund_improved_1992,
+	address = {Pittsburgh Pennsylvania USA},
+	author = {Freund, Yoav},
+	booktitle = {Proceedings of the fifth annual workshop on {Computational} learning theory},
+	doi = {10.1145/130385.130429},
+	isbn = {9780897914970},
+	language = {en},
+	month = jul,
+	pages = {391--398},
+	publisher = {ACM},
+	title = {An improved boosting algorithm and its implications on learning complexity},
+	url = {https://dl.acm.org/doi/10.1145/130385.130429},
+	urldate = {2023-12-05},
+	year = {1992},
+	bdsk-url-1 = {https://dl.acm.org/doi/10.1145/130385.130429},
+	bdsk-url-2 = {https://doi.org/10.1145/130385.130429}}
+
+
+@book{odonnell_analysis_2014,
+	abstract = {Boolean functions are perhaps the most basic objects of study in theoretical computer science. They also arise in other areas of mathematics, including combinatorics, statistical physics, and mathematical social choice. The field of analysis of Boolean functions seeks to understand them via their Fourier transform and other analytic methods. This text gives a thorough overview of the field, beginning with the most basic definitions and proceeding to advanced topics such as hypercontractivity and isoperimetry. Each chapter includes a 'highlight application' such as Arrow's theorem from economics, the Goldreich--Levin algorithm from cryptography/learning theory, H{\aa}stad's NP-hardness of approximation results, and 'sharp threshold' theorems for random graph properties. The book includes roughly 450 exercises and can be used as the basis of a one-semester graduate course. It should appeal to advanced undergraduates, graduate students and researchers in computer science theory and related mathematical fields.},
+	author = {O'Donnell, Ryan},
+	doi = {10.1017/CBO9781139814782},
+	edition = {1},
+	isbn = {9781107038325 9781139814782 9781107471542},
+	month = jun,
+	publisher = {Cambridge University Press},
+	title = {Analysis of {Boolean} {Functions}},
+	url = {https://www.cambridge.org/core/product/identifier/9781139814782/type/book},
+	urldate = {2023-12-06},
+	year = {2014},
+	bdsk-url-1 = {https://www.cambridge.org/core/product/identifier/9781139814782/type/book},
+	bdsk-url-2 = {https://doi.org/10.1017/CBO9781139814782}}
+
+
+@article{blum_noise-tolerant_2003,
+	abstract = {We describe a slightly subexponential time algorithm for learning parity functions in the presence of random classification noise, a problem closely related to several cryptographic and coding problems. Our algorithm runs in polynomial time for the case of parity functions that depend on only the first 
+              O 
+              (log 
+              n 
+              log log 
+              n 
+              ) bits of input, which provides the first known instance of an efficient noise-tolerant algorithm for a concept class that is not learnable in the Statistical Query model of Kearns [1998]. Thus, we demonstrate that the set of problems learnable in the statistical query model is a strict subset of those problems learnable in the presence of noise in the PAC model.In coding-theory terms, what we give is a poly( 
+              n 
+              )-time algorithm for decoding linear 
+              k 
+              × 
+              n 
+              codes in the presence of random noise for the case of 
+              k 
+              = 
+              c 
+              log 
+              n 
+              log log 
+              n 
+              for some 
+              c 
+              {\textgreater} 0. (The case of 
+              k 
+              = 
+              O 
+              (log 
+              n 
+              ) is trivial since one can just individually check each of the 2 
+               
+                k 
+               
+              possible messages and choose the one that yields the closest codeword.)A natural extension of the statistical query model is to allow queries about statistical properties that involve 
+              t 
+              -tuples of examples, as opposed to just single examples. The second result of this article is to show that any class of functions learnable (strongly or weakly) with 
+              t 
+              -wise queries for 
+              t 
+              = 
+              O 
+              (log 
+              n 
+              ) is also weakly learnable with standard unary queries. Hence, this natural extension to the statistical query model does not increase the set of weakly learnable functions.},
+	author = {Blum, Avrim and Kalai, Adam and Wasserman, Hal},
+	doi = {10.1145/792538.792543},
+	issn = {0004-5411, 1557-735X},
+	journal = {Journal of the ACM},
+	language = {en},
+	month = jul,
+	number = {4},
+	pages = {506--519},
+	title = {Noise-tolerant learning, the parity problem, and the statistical query model},
+	url = {https://dl.acm.org/doi/10.1145/792538.792543},
+	urldate = {2023-12-06},
+	volume = {50},
+	year = {2003},
+	bdsk-url-1 = {https://dl.acm.org/doi/10.1145/792538.792543},
+	bdsk-url-2 = {https://doi.org/10.1145/792538.792543}}
+
+
+@inproceedings{braverman_interactive_2012,
+	address = {New York New York USA},
+	author = {Braverman, Mark},
+	booktitle = {Proceedings of the forty-fourth annual {ACM} symposium on {Theory} of computing},
+	doi = {10.1145/2213977.2214025},
+	isbn = {9781450312455},
+	language = {en},
+	month = may,
+	pages = {505--524},
+	publisher = {ACM},
+	title = {Interactive information complexity},
+	url = {https://dl.acm.org/doi/10.1145/2213977.2214025},
+	urldate = {2023-12-06},
+	year = {2012},
+	bdsk-url-1 = {https://dl.acm.org/doi/10.1145/2213977.2214025},
+	bdsk-url-2 = {https://doi.org/10.1145/2213977.2214025}}
+
+
+@article{blumer_learnability_1989,
+	title = {Learnability and the {Vapnik}-{Chervonenkis} dimension},
+	volume = {36},
+	issn = {0004-5411, 1557-735X},
+	url = {https://dl.acm.org/doi/10.1145/76359.76371},
+	doi = {10.1145/76359.76371},
+	abstract = {Valiant's learnability model is extended to learning classes of concepts defined by regions in Euclidean space 
+               
+                E 
+                n 
+               
+              . The methods in this paper lead to a unified treatment of some of Valiant's results, along with previous results on distribution-free convergence of certain pattern recognition algorithms. It is shown that the essential condition for distribution-free learnability is finiteness of the Vapnik-Chervonenkis dimension, a simple combinatorial parameter of the class of concepts to be learned. Using this parameter, the complexity and closure properties of learnable classes are analyzed, and the necessary and sufficient conditions are provided for feasible learnability.},
+	language = {en},
+	number = {4},
+	urldate = {2023-12-07},
+	journal = {Journal of the ACM},
+	author = {Blumer, Anselm and Ehrenfeucht, A. and Haussler, David and Warmuth, Manfred K.},
+	month = oct,
+	year = {1989},
+	pages = {929--965},
+}
+
+@book{kearns_introduction_1994,
+	title = {An {Introduction} to {Computational} {Learning} {Theory}},
+	isbn = {9780262276863},
+	url = {https://direct.mit.edu/books/book/2604/an-introduction-to-computational-learning-theory},
+	language = {en},
+	urldate = {2023-12-07},
+	publisher = {The MIT Press},
+	author = {Kearns, Michael J. and Vazirani, Umesh},
+	year = {1994},
+	doi = {10.7551/mitpress/3897.001.0001},
+}
+
+@article{yang_new_2005,
+	title = {New lower bounds for statistical query learning},
+	volume = {70},
+	issn = {00220000},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0022000004001291},
+	doi = {10.1016/j.jcss.2004.10.003},
+	language = {en},
+	number = {4},
+	urldate = {2023-12-07},
+	journal = {Journal of Computer and System Sciences},
+	author = {Yang, Ke},
+	month = jun,
+	year = {2005},
+	pages = {485--509},
+}
+
+
+@article{aslam_general_1998,
+	title = {General {Bounds} on {Statistical} {Query} {Learning} and {PAC} {Learning} with {Noise} via {Hypothesis} {Boosting}},
+	volume = {141},
+	issn = {0890-5401},
+	url = {https://www.sciencedirect.com/science/article/pii/S0890540198926645},
+	doi = {10.1006/inco.1998.2664},
+	abstract = {We derive general bounds on the complexity of learning in the statistical query (SQ) model and in the PAC model with classification noise. We do so by considering the problem of boosting the accuracy of weak learning algorithms which fall within the SQ model. This new model was introduced by Kearns to provide a general framework for efficient PAC learning in the presence of classification noise. We first show a general scheme for boosting the accuracy of weak SQ learning algorithms, proving that weak SQ learning is equivalent to strong SQ learning. The boosting is efficient and is used to show our main result of the first general upper bounds on the complexity of strong SQ learning. Since all SQ algorithms can be simulated in the PAC model with classification noise, we also obtain general upper bounds on learning in the presence of classification noise for classes which can be learned in the SQ model.},
+	number = {2},
+	urldate = {2023-12-07},
+	journal = {Information and Computation},
+	author = {Aslam, Javed A. and Decatur, Scott E.},
+	month = mar,
+	year = {1998},
+	pages = {85--118},
+}
+

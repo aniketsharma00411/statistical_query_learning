@@ -1,0 +1,89 @@
+%% if some package prevents compilation, remove it
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage{fullpage}
+\usepackage{titling}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{IEEEtrantools} 
+\usepackage{bbm}
+\usepackage{lineno}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{lipsum}
+\usepackage{etoolbox} %% <- for \pretocmd and \apptocmd
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\setlength{\droptitle}{-6em}   % This is your set screw, for shifting up the title
+\renewcommand{\baselinestretch}{1.1}
+\setlength{\parskip}{0.5em}
+
+\author{Aniket Sharma
+  \\ October 29, 2023}
+\date{}
+\title{Statistical Query Learning \vspace{-0.5cm}}
+
+\makeatletter %% <- make @ usable in macro names
+\newcommand*\linenomathpatch{\@ifstar{\linenomathpatch@AMS}{\linenomathpatch@}}
+\newcommand*\linenomathpatch@[1]{
+  \expandafter\pretocmd\csname #1\endcsname {\linenomathWithnumbers}{}{}
+  \expandafter\pretocmd\csname #1*\endcsname{\linenomathWithnumbers}{}{}
+  \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}
+  \expandafter\apptocmd\csname end#1*\endcsname{\endlinenomath}{}{}
+}
+\newcommand*\linenomathpatch@AMS[1]{
+  \expandafter\pretocmd\csname #1\endcsname {\linenomathWithnumbersAMS}{}{}
+  \expandafter\pretocmd\csname #1*\endcsname{\linenomathWithnumbersAMS}{}{}
+  \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}
+  \expandafter\apptocmd\csname end#1*\endcsname{\endlinenomath}{}{}
+}
+\let\linenomathWithnumbersAMS\linenomathWithnumbers
+\patchcmd\linenomathWithnumbersAMS{\advance\postdisplaypenalty\linenopenalty}{}{}{}
+\makeatother %% revert @
+\linenomathpatch{IEEEeqnarray}
+\linenomathpatch{equation}
+\linenomathpatch*{gather}
+\linenomathpatch*{multline}
+\linenomathpatch*{align}
+\linenomathpatch*{alignat}
+\linenomathpatch*{flalign}
+
+\usepackage{natbib}
+
+\newtheorem{definition}{Definition}
+
+\newcommand{\Prob}[1]{\mathbb{P}( #1 )}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\EE}[1]{\E[#1]}
+
+\begin{document}
+\maketitle
+\vspace{-2cm}
+\linenumbers
+
+\input{proposal/introduction}
+\input{proposal/definitions}
+\input{proposal/conclusion}
+
+% \lipsum[75]
+
+% \lipsum[5]
+
+% \subsection{Motivation}
+% \label{sec:motivation}
+% \lipsum[66]
+
+% \lipsum[5]
+
+\bibliographystyle{plainnat} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+% \printbibliography
+
+\end{document}
