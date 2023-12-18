@@ -1,2 +1,3 @@
-# statistical_query_learning
+# Statistical Query Learning
+
 Project for CMPUT 654: Theoretical Foundations of Machine Learning
